@@ -30,6 +30,7 @@ body {
     margin: 0 auto;
     text-align: center;
     height: 200px;
+    position: relative;
 }
 
 canvas {

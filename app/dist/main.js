@@ -1,7 +1,7 @@
 var c = document.getElementById("canvas");
 var ctx = c.getContext("2d");
 var spaceShip = new Image;
-spaceShip.src = 'images/spaceship.png';
+spaceShip.src = 'images/spaceship1.png';
 
 var myGameArea = {
   keys: [],
@@ -85,18 +85,16 @@ function generateEnemy(x) {
     myGameArea.hasEnemy = true;
     enemy.x = x;
     enemy.y = 0;
-    ctx.beginPath();
-    ctx.rect(enemy.x, enemy.y, enemy.width, enemy.height);
-    ctx.strokeStyle="#ff23da";
-    ctx.stroke();
+    enemy.img = new Image;
+    var number = Math.floor(Math.random() * 3);
+    enemy.img.src = 'images/monster' + number + '.png';
+    ctx.drawImage(enemy.img, enemy.x, enemy.y, enemy.width, enemy.height);
 }
 
 function moveEnemy() {
     ctx.beginPath();
     enemy.y += enemy.speed;
-    ctx.rect(enemy.x, enemy.y, enemy.width, enemy.height);
-    ctx.strokeStyle="#ff23da";
-    ctx.stroke();
+    ctx.drawImage(enemy.img, enemy.x, enemy.y, enemy.width, enemy.height);
     if(enemy.y + enemy.height > c.height) {
         myGameArea.hasEnemy = false;
     }
@@ -126,8 +124,8 @@ var ship = {
   y: c.height - 15,
   speed: 1,
   img: spaceShip,
-  width: 10,
-  height: 15,
+  width: 11,
+  height: 13,
 }
 
 var laser = {
@@ -142,6 +140,7 @@ var enemy = {
   x: 0,
   y: 0,
   speed: .5,
-  width: 10,
-  height: 7,
+  width: 13,
+  height: 9,
+  img: '',
 }

@@ -141,8 +141,8 @@ function shoot(){
     ctx.beginPath();
     laser.y-= laser.speed;
     ctx.rect(laser.x, laser.y, laser.width, laser.height);
-    ctx.strokeStyle="#fffb0f";
-    ctx.stroke();
+    ctx.fillStyle="#fffb0f";
+    ctx.fill();
     if (laser.y - laser.speed < 0) {
       laser.y = ship.y;
       laser.x = ship.x + 20

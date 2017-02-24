@@ -1,5 +1,6 @@
 html {
     min-height: 100%;
+    font-family: 'Roboto';
 }
 
 body {
@@ -31,6 +32,7 @@ body {
     text-align: center;
     height: 200px;
     position: relative;
+    color: #ff74d0;
 }
 
 .links a {

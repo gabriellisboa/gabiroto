@@ -16,6 +16,12 @@ body {
   max-width: 415px;
   min-height: 76px;
   position: relative;
+  opacity: .3;
+  transition: opacity 1s;
+}
+
+.home-logo:hover {
+  opacity: 1;
 }
 
 .home-logo img {

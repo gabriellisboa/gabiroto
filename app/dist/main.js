@@ -1,7 +1,28 @@
 var c = document.getElementById("canvas");
 var ctx = c.getContext("2d");
 var spaceShip = new Image;
+var score = 0;
 spaceShip.src = 'images/spaceship1.png';
+
+var levels = {
+  one: 100,
+  two: 300,
+  three: 600,
+  four: 1500,
+  five: 5000,
+};
+
+var currentLevel = 1;
+
+var points = 10;
+
+window.onload = function () {
+  c.width = window.innerWidth;
+  c.height = window.innerHeight;
+
+  ship.x = Math.floor((c.width / 2) - 25);
+  ship.y = Math.floor(c.height -60);
+}
 
 var myGameArea = {
   keys: [],
@@ -79,6 +100,15 @@ function update() {
   } else {
       moveEnemy();
   }
+
+  // score
+  ctx.font = '30px Arial';
+  ctx.fillStyle = '#ff74d0'
+  ctx.fillText("Score: " + score,10,50);
+
+  ctx.font = '30px Arial';
+  ctx.fillStyle = '#ff74d0'
+  ctx.fillText("Level: " + currentLevel,c.width - 150, 50);
 }
 
 function generateEnemy(x) {
@@ -102,6 +132,7 @@ function moveEnemy() {
     if((laser.x >= enemy.x && laser.x <= enemy.x + enemy.width) && (laser.y >= enemy.y && laser.y <= enemy.y + enemy.height)) {
         myGameArea.hasEnemy = false;
         myGameArea.shooting = false;
+        updateScore();
     }
 
 }
@@ -114,33 +145,73 @@ function shoot(){
     ctx.stroke();
     if (laser.y - laser.speed < 0) {
       laser.y = ship.y;
-      laser.x = ship.x
+      laser.x = ship.x + 20
       myGameArea.shooting = false;
     }
 }
 
+function updateScore() {
+    switch (score) {
+      case levels.one:
+          points = 20;
+          enemy.speed = 3;
+          laser.speed++;
+          currentLevel++;
+          break;
+      case levels.two:
+          points = 30;
+          enemy.speed = 3.5;
+          ship.speed = 6;
+          laser.speed++;
+          currentLevel++;
+          break;
+      case levels.three:
+          points = 60;
+          enemy.speed = 4;
+          ship.speed = 7;
+          laser.speed++;
+          currentLevel++;
+          break;
+      case levels.four:
+          points = 100;
+          enemy.speed = 4.5;
+          ship.speed = 8;
+          laser.speed++;
+          currentLevel++;
+          break;
+        case levels.five:
+          points = 200;
+          enemy.speed = 5;
+          ship.speed = 9;
+          laser.speed++;
+          currentLevel++;
+          break;
+    }
+    score+= points;
+}
+
 var ship = {
-  x: Math.floor((c.width / 2) - 5),
+  x: Math.floor((c.width / 2)),
   y: c.height - 15,
-  speed: 1,
+  speed: 5,
   img: spaceShip,
-  width: 11,
-  height: 13,
+  width: 50,
+  height: 60,
 }
 
 var laser = {
   x: 0,
   y: 0,
-  speed: 5,
-  width: 2,
-  height: 5,
+  speed: 15,
+  width: 8,
+  height: 10,
 }
 
 var enemy = {
   x: 0,
   y: 0,
-  speed: .5,
-  width: 13,
-  height: 9,
+  speed: 2,
+  width: 40,
+  height: 28,
   img: '',
 }

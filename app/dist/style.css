@@ -36,9 +36,16 @@ body {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
-    height: 200px;
+    height: 0px;
     position: relative;
     color: #ff74d0;
+    transition: height .5s;
+    overflow: hidden;
+}
+
+.links.opened {
+  height: 50px;
+  transition: height 1s;
 }
 
 .links a {
@@ -51,6 +58,23 @@ canvas {
   top: 0;
   left: 0;
   z-index: -1;
+  border: 6px dashed #ff74d0;
+  border-top: 0;
+  border-bottom: 0;
+  animation: .9s borderColor steps(100) infinite;
+	-webkit-animation: .9s borderColor steps(100) infinite;
+}
+
+@keyframes borderColor {
+  0% { border-color: #0F0; }
+  50% { border-color: #0EF; }
+  100% { border-color: #FE0; }
+}
+
+@-webkit-keyframes borderColor {
+  0% { border-color: #0F0; }
+  50% { border-color: #0EF; }
+  100% { border-color: #FE0; }
 }
 
 @-webkit-keyframes waves {

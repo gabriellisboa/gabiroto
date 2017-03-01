@@ -3,6 +3,7 @@ var ctx = c.getContext("2d");
 var spaceShip = new Image;
 var score = 0;
 spaceShip.src = 'images/spaceship1.png';
+var isBoostAvailable = false;
 
 var levels = {
   one: 100,
@@ -17,8 +18,11 @@ var currentLevel = 1;
 var points = 10;
 
 window.onload = function () {
-  c.width = window.innerWidth;
+  c.width = window.innerWidth > 600 ? 600 : window.innerWidth;
   c.height = window.innerHeight;
+
+  c.style.marginLeft = -(c.width / 2) + 'px';
+  c.style.left = '50%';
 
   ship.x = Math.floor((c.width / 2) - 25);
   ship.y = Math.floor(c.height -60);
@@ -30,10 +34,15 @@ var myGameArea = {
   hasEnemy: false,
 };
 
+
 spaceShip.onload = function(){
   setInterval(function() {
     update();
-  }, 10)
+  }, 10);
+
+  setInterval(function() {
+    isBoostAvailable = true;
+  }, 60000);
 };
 
 
@@ -100,6 +109,13 @@ function update() {
   } else {
       moveEnemy();
   }
+  
+  if(!myGameArea.hasBoost && isBoostAvailable) {
+      generateBoost(Math.floor((Math.random() * c.width - 20) + 1));
+      isBoostAvailable = false;
+  }  else if(myGameArea.hasBoost) {
+      moveBoost();
+  }
 
   // score
   ctx.font = '30px Arial';
@@ -136,6 +152,46 @@ function moveEnemy() {
     }
 
 }
+
+function generateBoost(x) {
+    myGameArea.hasBoost = true;
+    boost.x = x;
+    boost.y = 0;
+    ctx.beginPath();
+    ctx.rect(boost.x, boost.y, boost.width, boost.height);
+    ctx.fillStyle="#fffb0f";
+    ctx.fill();
+    if (boost.y + boost.speed < 0) {
+      myGameArea.hasBoost = false;
+    }
+}
+
+function moveBoost() {
+    boost.y += boost.speed;
+    ctx.beginPath();
+    ctx.rect(boost.x, boost.y, boost.width, boost.height);
+    ctx.fillStyle="#fffb0f";
+    ctx.fill();
+    
+    if(boost.y + boost.height > c.height) {
+        myGameArea.hasBoost = false;
+    }
+
+    if((boost.x >= ship.x && boost.x <= ship.x + ship.width) && (boost.y >= ship.y && boost.y <= ship.y + ship.height)) {
+        myGameArea.hasBoost = false;
+        updateLaser();
+    }
+
+    if((laser.x >= boost.x && laser.x <= boost.x + boost.width) && (laser.y >= boost.y && laser.y <= boost.y + boost.height)) {
+        myGameArea.hasBoost = false;
+    }
+}
+
+function updateLaser() {
+    laser.speed+= 10;
+}
+
+
 
 function shoot(){
     ctx.beginPath();
@@ -215,3 +271,29 @@ var enemy = {
   height: 28,
   img: '',
 }
+
+var boost = {
+  x: 0,
+  y: 0,
+  speed: 2,
+  width: 50,
+  height: 50,
+}
+
+
+// UX SHIT
+
+function showMenu() {
+    const links = document.getElementById('links');
+    if (links.className.indexOf('opened') !== -1) {
+        links.className = 'links';
+    } else {
+      links.className = 'links opened';
+    }
+}
+
+
+
+
+
+

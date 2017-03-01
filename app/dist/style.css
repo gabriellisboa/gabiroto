@@ -12,8 +12,9 @@ body {
 
 .home-logo {
   margin: calc(50vh - 76px) auto 0 auto;
+  margin-top: 14px;
   display: block;
-  max-width: 415px;
+  width: 254px;
   min-height: 76px;
   position: relative;
   opacity: .3;

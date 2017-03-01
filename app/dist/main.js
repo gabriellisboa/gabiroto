@@ -267,8 +267,8 @@ var enemy = {
   x: 0,
   y: 0,
   speed: 2,
-  width: 40,
-  height: 28,
+  width: 50,
+  height: 33,
   img: '',
 }
 

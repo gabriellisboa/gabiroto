@@ -39,7 +39,7 @@ body {
   margin: 0;
 }
 .home-logo p span {
-  animation: type 5s infinite;
+  animation: type 4s infinite;
   overflow: hidden;
   width: 0;
   height: 100%;
@@ -61,7 +61,7 @@ body {
 }
 
 .links.opened {
-  max-height: 200px;
+  max-height: 500px;
   transition: max-height 1s, padding 1s;
   border: 3px dotted #ff74d0;
 }
@@ -188,8 +188,8 @@ canvas {
   0% {
     width: 0;
   }
-  80% {
-    width: 50%;
+  50% {
+    width: 0;
   }
   100% {
     width: 100%;

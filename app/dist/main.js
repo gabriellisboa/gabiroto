@@ -21,7 +21,7 @@ window.onload = function () {
   c.width = window.innerWidth > 600 ? 600 : window.innerWidth;
   c.height = window.innerHeight;
 
-  c.style.marginLeft = -(c.width / 2) + 'px';
+  c.style.marginLeft = -((c.width / 2) + 1) + 'px';
   c.style.left = '50%';
 
   ship.x = Math.floor((c.width / 2) - 25);
@@ -42,7 +42,7 @@ spaceShip.onload = function(){
 
   setInterval(function() {
     isBoostAvailable = true;
-  }, 60000);
+  }, 30000);
 };
 
 
@@ -105,26 +105,26 @@ function update() {
     shoot();
   }
   if(!myGameArea.hasEnemy) {
-      generateEnemy(Math.floor((Math.random() * c.width - 20) + 1));
+      generateEnemy(Math.floor((Math.random() * (c.width - 50)) + 1));
   } else {
       moveEnemy();
   }
   
   if(!myGameArea.hasBoost && isBoostAvailable) {
-      generateBoost(Math.floor((Math.random() * c.width - 20) + 1));
+      generateBoost(Math.floor((Math.random() * (c.width - 50)) + 1));
       isBoostAvailable = false;
   }  else if(myGameArea.hasBoost) {
       moveBoost();
   }
 
   // score
-  ctx.font = '30px Arial';
+  ctx.font = '16px Minecraftia';
   ctx.fillStyle = '#ff74d0'
-  ctx.fillText("Score: " + score,10,50);
+  ctx.fillText("Score:  " + score, 20, 50);
 
-  ctx.font = '30px Arial';
+  ctx.font = '16px Minecraftia';
   ctx.fillStyle = '#ff74d0'
-  ctx.fillText("Level: " + currentLevel,c.width - 150, 50);
+  ctx.fillText("Level:  " + currentLevel, c.width - 92, 50);
 }
 
 function generateEnemy(x) {
@@ -157,10 +157,7 @@ function generateBoost(x) {
     myGameArea.hasBoost = true;
     boost.x = x;
     boost.y = 0;
-    ctx.beginPath();
-    ctx.rect(boost.x, boost.y, boost.width, boost.height);
-    ctx.fillStyle="#fffb0f";
-    ctx.fill();
+    ctx.drawImage(boost.img, boost.x, boost.y, boost.width, boost.height);
     if (boost.y + boost.speed < 0) {
       myGameArea.hasBoost = false;
     }
@@ -168,10 +165,7 @@ function generateBoost(x) {
 
 function moveBoost() {
     boost.y += boost.speed;
-    ctx.beginPath();
-    ctx.rect(boost.x, boost.y, boost.width, boost.height);
-    ctx.fillStyle="#fffb0f";
-    ctx.fill();
+    ctx.drawImage(boost.img, boost.x, boost.y, boost.width, boost.height);
     
     if(boost.y + boost.height > c.height) {
         myGameArea.hasBoost = false;
@@ -278,7 +272,9 @@ var boost = {
   speed: 2,
   width: 50,
   height: 50,
-}
+  img: new Image,
+};
+boost.img.src = 'images/boost.jpg';
 
 
 // UX SHIT

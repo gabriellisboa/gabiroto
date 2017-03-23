@@ -58,33 +58,39 @@ body {
     overflow: hidden;
     background-color: #011;
     border: 0;
+    animation: 2s borderColor steps(100) infinite;
+    -webkit-animation: 2s borderColor steps(100) infinite;
 }
 
 .links.opened {
   max-height: 500px;
   transition: max-height 1s, padding 1s;
-  border: 3px dotted #ff74d0;
+  border: 4px double #ff74d0;
+  padding: 16px 0;
 }
 
 .links a {
-  color: #ff74d0;
+  color: #b50078;
   display: block;
   text-decoration: none;
-  border-bottom: 1px dotted #ff74d0;
-  padding: 0 20px;
+  padding: 10px 20px;
 }
 
 .links a img {
   width: 20px;
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: top;
+  opacity: 0.8;
 }
 
 .links a span {
   margin: 0 0 0 10px; 
   display: inline-block;
-  vertical-align: middle;
-  padding-top: 10px;
+  vertical-align: top;
+}
+
+.links a img.soundcloud-logo {
+  padding-top: 6px;
 }
 
 canvas {
@@ -93,23 +99,25 @@ canvas {
   top: 0;
   left: 0;
   z-index: -1;
-  border: 1px dashed #ff74d0;
+  border: 4px double #b50078;
   border-top: 0;
   border-bottom: 0;
-  animation: .9s borderColor steps(100) infinite;
-	-webkit-animation: .9s borderColor steps(100) infinite;
 }
 
 @keyframes borderColor {
-  0% { border-color: #0F0; }
-  50% { border-color: #0EF; }
-  100% { border-color: #FE0; }
+  0% { border-color: #ff74d0; }
+  25% { border-color: #b50078; }
+  50% { border-color: #ff74d0; }
+  75% { border-color: #b50078; }
+  100% { border-color: #ff74d0; }
 }
 
 @-webkit-keyframes borderColor {
-  0% { border-color: #0F0; }
-  50% { border-color: #0EF; }
-  100% { border-color: #FE0; }
+  0% { border-color: #ff74d0; }
+  25% { border-color: #b50078; }
+  50% { border-color: #ff74d0; }
+  75% { border-color: #b50078; }
+  100% { border-color: #ff74d0; }
 }
 
 @-webkit-keyframes waves {

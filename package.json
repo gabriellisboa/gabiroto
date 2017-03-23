@@ -4,11 +4,23 @@
   "description": "Gabiroto's personal page",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "webpack": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "node-sass --output-style compressed app/style -o dist/css",
+    "watch-css": "node-sass --output-style compressed -w app/style/ -o dist/css/",
+
+    "start": "webpack && npm run build-css  && node server/server.js"
+
   },
   "author": "gabiroto",
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "node-sass": "^4.5.1",
+    "nodemon": "^1.11.0",
+    "sass-loader": "^6.0.3",
+    "webpack": "^2.3.1"
   }
 }

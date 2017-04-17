@@ -351,10 +351,16 @@ boost.img.src = 'dist/images/boost.jpg';
 
 // UX SHIT
 document.getElementById('home-logo').addEventListener('click', function() {
-  console.log('OE');
   showMenu();
 });
 
+document.getElementById('close').addEventListener('click', function() { 
+  toggleCv();
+});
+
+document.getElementById('cvLink').addEventListener('click', function() { 
+  toggleCv();
+});
 
 function showMenu() {
     const links = document.getElementById('links');
@@ -365,12 +371,19 @@ function showMenu() {
     } 
 }
 
+function toggleCv() {
+    console.log(oies)
+    const links = document.getElementById('cv');
+    if (links.className.indexOf('hidden') !== -1) {
+        links.className = '';
+    } else {
+      links.className = 'hidden';
+    } 
+}
 
+function toggleCv() {
 
-
-
-
-
+}
 
 /***/ })
 /******/ ]);

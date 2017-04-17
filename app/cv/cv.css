@@ -71,28 +71,3 @@ body {
   }
 }
 
-article {
-    display: inline-block;
-    color: #fff;
-    background-color: #022;
-    max-width: 800px;
-    padding: 20px;
-}
-
-article h3,
-article h4,
-article p {
-    text-align: left;
-}
-
-article h3 {
-  font-size: 12px;
-}
-
-article h4 {
-  font-size: 14px;
-}
-
-article p {
-  font-size: 10px;
-}

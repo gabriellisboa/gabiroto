@@ -3,7 +3,7 @@
 *You have nothing to see here.*
 
 ```
-:(
+This is just a personal site project
 ```
 
 ###### To run

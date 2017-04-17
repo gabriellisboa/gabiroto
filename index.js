@@ -278,6 +278,11 @@ boost.img.src = 'dist/images/boost.jpg';
 
 
 // UX SHIT
+document.getElementById('home-logo').addEventListener('click', function() {
+  console.log('OE');
+  showMenu();
+});
+
 
 function showMenu() {
     const links = document.getElementById('links');
@@ -285,7 +290,7 @@ function showMenu() {
         links.className = 'links';
     } else {
       links.className = 'links opened';
-    }
+    } 
 }
 
 

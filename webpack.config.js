@@ -15,9 +15,6 @@ module.exports = {
                 loader: "css-loader"
             }, {
                 loader: "sass-loader",
-                options: {
-                    includePaths: ["absolute/path/a", "absolute/path/b"]
-                }
             }]
         }]
     }

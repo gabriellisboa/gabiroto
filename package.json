@@ -9,7 +9,7 @@
     "build-css": "node-sass --output-style compressed app/style -o dist/css",
     "watch-css": "node-sass --output-style compressed -w app/style/ -o dist/css/",
 
-    "start": "webpack && npm run build-css  && node server/server.js"
+    "start": "npm run build-css  && webpack && node server/server.js"
 
   },
   "author": "gabiroto",

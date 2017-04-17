@@ -12,7 +12,7 @@ body {
   background-color: #011;
 }
 
-.home-logo {
+#home-logo {
   margin: calc(50vh - 76px) auto 0 auto;
   margin-top: 14px;
   display: block;
@@ -21,14 +21,14 @@ body {
   position: relative;
 }
 
-.home-logo img {
+#home-logo img {
   max-width: 100%;
   position: absolute;
   animation: .9s waves steps(100) infinite;
 	-webkit-animation: .7s waves steps(100) infinite;
 }
 
-.home-logo p {
+#home-logo p {
   color: #ff74d0;
   font-size: 10px;
   text-align: center;
@@ -38,7 +38,7 @@ body {
   height: 16px;
   margin: 0;
 }
-.home-logo p span {
+#home-logo p span {
   animation: type 4s infinite;
   overflow: hidden;
   width: 0;

@@ -3,3 +3,5 @@ node_modules/*
 playground/*
 
 npm-debug.log
+
+dist/*

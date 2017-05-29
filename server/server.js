@@ -3,7 +3,7 @@ var path = require("path");
 
 var app = express();
 app.use(express.static(path.join(__dirname,"../")));
-console.log(__dirname);
+
 app.listen(7777,function(){
     console.log("Started listening on port", 7777);
 })

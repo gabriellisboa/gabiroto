@@ -358,7 +358,7 @@ document.getElementById('close').addEventListener('click', function() {
   toggleCv();
 });
 
-document.getElementById('cvLink').addEventListener('click', function() { 
+document.getElementById('cvLink').addEventListener('click', function() {
   toggleCv();
 });
 
@@ -372,17 +372,13 @@ function showMenu() {
 }
 
 function toggleCv() {
-    console.log(oies)
+    console.log('oies');
     const links = document.getElementById('cv');
     if (links.className.indexOf('hidden') !== -1) {
         links.className = '';
     } else {
       links.className = 'hidden';
     } 
-}
-
-function toggleCv() {
-
 }
 
 /***/ })

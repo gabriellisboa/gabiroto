@@ -2,7 +2,7 @@ var c = document.getElementById("canvas");
 var ctx = c.getContext("2d");
 var spaceShip = new Image;
 var score = 0;
-spaceShip.src = 'dist/images/spaceship1.png';
+spaceShip.src = 'app/images/spaceship1.png';
 var isBoostAvailable = false;
 
 var levels = {
@@ -133,7 +133,7 @@ function generateEnemy(x) {
     enemy.y = 0;
     enemy.img = new Image;
     var number = Math.floor(Math.random() * 3);
-    enemy.img.src = 'dist/images/monster' + number + '.png';
+    enemy.img.src = 'app/images/monster' + number + '.png';
     ctx.drawImage(enemy.img, enemy.x, enemy.y, enemy.width, enemy.height);
 }
 
@@ -274,7 +274,7 @@ var boost = {
   height: 50,
   img: new Image,
 };
-boost.img.src = 'dist/images/boost.jpg';
+boost.img.src = 'app/images/boost.jpg';
 
 
 // UX SHIT

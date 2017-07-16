@@ -12,6 +12,26 @@ body {
   background-color: #011;
 }
 
+#loader {
+  background-color: #011;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  color: #ff74d0;
+  text-align: center;
+  line-height: 50%;
+  padding-top: 40%;
+}
+
+#loader:before {
+  animation: loader 4s infinite;
+  display: inline;
+  content: "Loading";
+}
+
 #home-logo {
   margin: calc(50vh - 76px) auto 0 auto;
   margin-top: 14px;
@@ -201,6 +221,24 @@ canvas {
   }
   100% {
     width: 100%;
+  }
+}
+
+@keyframes loader {
+  0% {
+    content: "Loading."
+  }
+  25% {
+    content: "Loading.."
+  }
+  50% {
+    content: "Loading..."
+  }
+  75% {
+    content: "Loading.."
+  }
+  100% {
+    content: "Loading."
   }
 }
 
